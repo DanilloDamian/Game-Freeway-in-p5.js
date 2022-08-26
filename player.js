@@ -3,6 +3,8 @@ let yPlayer= 375;
 let collision=false;
 let myPoints=0;
 let level=1;
+let highestScore=0;
+
 
 function showPlayer(){
   image(playerImage, xPlayer,yPlayer,30,30);
@@ -39,14 +41,17 @@ function score(){
   textSize(25);
   fill(color(255,255,100))
   text(myPoints,width/5,25);
-     }
+  text("Highest Score: "+highestScore,320,25)
+   }
 function increaseScore(){
   if(yPlayer<15){
     myPoints+=1;
     pointSound.play();
     returnPlayer();
     addLevel()
-    
+    if(myPoints>highestScore){
+       highestScore=myPoints;
+       }
 }}
 function canMove(){
   return yPlayer<375;
