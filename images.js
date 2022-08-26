@@ -1,26 +1,21 @@
-// imagens e sons do jogo
+let roadImage;
+let playerImage;
+let carImage;
+let carImage2;
+let carImage3;
 
-let imagemDaEstrada;
-let imagemDoAtor;
-let imagemCarro;
-let imagemCarro2;
-let imagemCarro3;
-
-//sons do jogo
-
-let somDaTrilha;
-let somDaColisao;
-let somDoPonto;
+let backgroundSound;
+let pointSound;
+let collisionSound;
 
 function preload(){
-  imagemDaEstrada = loadImage("images/estrada.png");
-  imagemDoAtor = loadImage("images/ator-1.png");
-  imagemCarro = loadImage("images/carro-1.png");
-  imagemCarro2 = loadImage("images/carro-2.png");
-  imagemCarro3 = loadImage("images/carro-3.png");  
-  imagemCarros = [imagemCarro, imagemCarro2, imagemCarro3, imagemCarro, imagemCarro2, imagemCarro3]
-  
-  somDaTrilha = loadSound("sounds/trilha.mp3");
-  somDaColisao = loadSound("sounds/colidiu.mp3");
-  somDoPonto = loadSound("sounds/pontos.wav");
+  roadImage= loadImage("images/estrada.png");
+  playerImage = loadImage("images/ator-1.png");
+  carImage = loadImage("images/carro-1.png");
+  carImage2 = loadImage("images/carro-2.png");
+  carImage3 = loadImage("images/carro-3.png");
+  imageCar= [carImage,carImage2,carImage3,carImage,carImage2,carImage3];
+  backgroundSound = loadSound("sounds/trilha.mp3");
+ pointSound = loadSound("sounds/pontos.wav");
+collisionSound = loadSound("sounds/colidiu.mp3");
 }

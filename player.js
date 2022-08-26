@@ -1,67 +1,57 @@
-//código do ator
-let xAtor = 85;
-let yAtor = 366;
-let colisao = false;
-let meusPontos = 0;
+let xPlayer= 230;
+let yPlayer= 375;
+let collision=false;
+let myPoints=0;
+let level=1;
 
-function mostraAtor(){
-  image(imagemDoAtor, xAtor, yAtor, 30, 30);
+function showPlayer(){
+  image(playerImage, xPlayer,yPlayer,30,30);
 }
-
-function movimentaAtor(){
-  if (keyIsDown(UP_ARROW)){
-    yAtor -= 3;
+function movePlayer(){
+  if(keyIsDown(UP_ARROW)){
+    yPlayer-=3;
   }
-  if (keyIsDown(DOWN_ARROW)){
-    if(podeSeMover()){
-      yAtor += 3;
-    }
+   if(keyIsDown(DOWN_ARROW)){
+   if(canMove()){ yPlayer+=3;
+  }}
+   if(keyIsDown(LEFT_ARROW)){
+    xPlayer-=3;
   }
-}
-
-function verificaColisao(){
-  //collideRectCircle(x1, y1, width1, height1, cx, cy, diameter)
-  for (let i = 0; i < imagemCarros.length; i++){
-    colisao = collideRectCircle(xCarros[i], yCarros[i], comprimentoCarro, alturaCarro, xAtor, yAtor, 15)
-    if (colisao){
-      voltaAtorParaPosicaoInicial();
-      somDaColisao.play();
-      if (pontosMaiorQueZero()){
-        meusPontos -= 1;
-      }
-    }
+   if(keyIsDown(RIGHT_ARROW)){
+    xPlayer+=3;
   }
 }
-
-function voltaAtorParaPosicaoInicial(){
-  yAtor = 366;
+function checkCollision(){
+for(let i =0; i< imageCar.length; i++){
+  collision = collideRectCircle(xCars[i],yCars[i],lengthCar,heightCar,xPlayer, (yPlayer+20),15)
+  if(collision){
+    returnPlayer();
+    collisionSound.play();
+    myPoints=0;
+    level=1;
+  }}}
+function returnPlayer(){
+  yPlayer = 375;
+  xPlayer=230;
 }
-
-function incluiPontos(){
+function score(){
   textAlign(CENTER);
   textSize(25);
-  fill(color(255, 240, 60))
-  text(meusPontos, width / 5, 27);
+  fill(color(255,255,100))
+  text(myPoints,width/5,25);
+     }
+function increaseScore(){
+  if(yPlayer<15){
+    myPoints+=1;
+    pointSound.play();
+    returnPlayer();
+    addLevel()
+    
+}}
+function canMove(){
+  return yPlayer<375;
 }
-
-function marcaPonto(){
-  if (yAtor < 15){
-    meusPontos += 1;
-    somDoPonto.play();
-    voltaAtorParaPosicaoInicial();
-  }
+function addLevel(){
+  level+=0.3;
+  
 }
-
-function pontosMaiorQueZero(){
-  return meusPontos > 0;
-}
-
-function podeSeMover(){
-  return yAtor < 366;
-}
-
-
-
-
-
-

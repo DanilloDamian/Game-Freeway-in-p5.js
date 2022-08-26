@@ -1,26 +1,24 @@
+
 function setup() {
-    createCanvas(500, 400);
-    somDaTrilha.loop();
-  }
+  createCanvas(500, 400);
+  backgroundSound.loop();
+}
+
+function draw() {
+  background(roadImage);
+  showPlayer();
+  showCar();
+  moveCar();
+  movePlayer();
+  returnCarStart();
+  checkCollision();
+  score();
+  increaseScore();
   
-  function draw() {
-    background(imagemDaEstrada);
-    mostraAtor();
-    mostraCarro();
-    movimentaCarro();
-    movimentaAtor();
-    voltaPosicaoInicialDoCarro();
-    verificaColisao();
-    incluiPontos();
-    marcaPonto();
-  }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+}
+
+
+
+
+
+
