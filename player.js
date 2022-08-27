@@ -14,13 +14,13 @@ function movePlayer(){
     yPlayer-=3;
   }
    if(keyIsDown(DOWN_ARROW)){
-   if(canMove()){ yPlayer+=3;
+   if(yPlayer<375){ yPlayer+=3;
   }}
    if(keyIsDown(LEFT_ARROW)){
-    xPlayer-=3;
+    if(xPlayer>0){xPlayer-=3;}
   }
    if(keyIsDown(RIGHT_ARROW)){
-    xPlayer+=3;
+    if(xPlayer<470){xPlayer+=3;}
   }
 }
 function checkCollision(){
@@ -48,15 +48,10 @@ function increaseScore(){
     myPoints+=1;
     pointSound.play();
     returnPlayer();
-    addLevel()
+     addLevel()
     if(myPoints>highestScore){
        highestScore=myPoints;
-       }
-}}
-function canMove(){
-  return yPlayer<375;
-}
+       }}}
 function addLevel(){
   level+=0.3;
-  
-}
+  }
